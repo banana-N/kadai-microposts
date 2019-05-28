@@ -2,6 +2,14 @@
 
 @section('content')
     @if(Auth::check())
+    <?php 
+    $user = Auth::user()->name;
+    if($user == 'test'){
+        echo "テストユーザ";
+    }elseif($user == 'admin'){
+        echo 'アドミンユーザ';
+    }
+    ?>
         {{ Auth::user()->name }}
     @else
     <div class="center jumbotron">
@@ -12,5 +20,6 @@
     </div>
     @endif
     
-    <?php var_dump(Auth::user()); ?>
+    <?php echo '<pre>'; var_dump(Auth::user()); echo '</pre>'; ?>
+    <?php  ?>
 @endsection
