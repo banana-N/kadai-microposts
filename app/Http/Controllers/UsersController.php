@@ -63,5 +63,4 @@ class UsersController extends Controller
         
         return view('users.followers', $data);
     }
-    
 }
