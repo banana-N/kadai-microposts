@@ -3,6 +3,19 @@
         <li class="media mb-3">
             <img class="mr-2 rounded" src="{{ Gravatar::src($micropost->user->email, 50) }}" alt="">
             <div class="media-body">
+                <?php
+                // echo 'ログインしているユーザID：';
+                // echo Auth::id();
+                // echo '<br />';
+                // echo 'この記事ID：';
+                // echo $micropost->id;
+                // echo '<br />';
+                // echo 'この記事のユーザID：';
+                // echo $micropost->user_id;
+                // echo '<pre>';
+                // // var_dump($micropost);
+                // echo '</pre>';
+                ?>
                 <div>
                     {!! link_to_route('users.show', $micropost->user->name, ['id' => $micropost->user->id]) !!} <span class="text-muted">posted at {{ $micropost->created_at }}</span>
                 </div>
@@ -16,6 +29,14 @@
                         {!! Form::close() !!}
                     @endif
                 </div>
+                <?php
+                // echo '<pre>';
+                // // var_dump($micropost);
+                // echo '記事ID：';
+                // echo $micropost->id;
+                // echo '</pre>';
+                ?>
+                @include('user_favorite.favorite_button', ['user' => $user,'micropost_id' => $micropost->id])
             </div>
         </li>
     @endforeach
