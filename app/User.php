@@ -151,4 +151,11 @@ class User extends Authenticatable
         $favorite_user_ids[] = $this->id;
         return Micropost::whereIn('user_id', $favorite_user_ids);
     }
+    
+    public function thinkBlock()
+    {
+        $favorite_user_ids = $this->favorites()->pluck('users.id')->toArray();
+        $favorite_userids[] = $this->id;
+        return Micropost::whereIn('user_id', $favorite_user_ids);
+    }
 }
